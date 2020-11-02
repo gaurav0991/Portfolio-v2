@@ -1,38 +1,220 @@
+* {
+  color: #64ffda;
+}
 .App {
-  text-align: center;
+  padding: 2px;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  background-image: linear-gradient(#0a192f, #172a45);
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.sideicons {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
+  top: 50vh;
+  position: fixed;
+}
+.vert {
+  border-left: 2px solid white;
+  height: 300px;
+}
+.content {
+  color: #e6f1ff;
+}
+.list-skills {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(140px, 200px));
+}
+li {
+  content: "1";
+  line-height: "12px";
+  font-size: 1.1rem;
+}
+.bar {
+  padding: 1px;
+  border-radius: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.bar::before {
+  content: "";
+  height: 10px;
+  background-color: palevioletred;
+  color: #e6f1ff;
+  display: inline-block;
+  border-radius: inherit;
+}
+.bar.front::before {
+  background-color: #8892b0;
+}
+.bar.back::before {
+  background-color: #64ffda;
 }
 
-.App-link {
-  color: #61dafb;
+.bar.learning::before {
+  width: calc(20% - 10px);
+}
+.bar.basic::before {
+  width: calc(40% - 10px);
+}
+.bar.intermediate::before {
+  width: calc(60% - 10px);
+}
+.bar.advanced::before {
+  width: calc(80% - 10px);
+}
+.bar.expert::before {
+  width: calc(100% - 10px);
+}
+.box-lang {
+  border: 1px solid #64ffda;
+  padding: 2px;
+  margin-right: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.lang .box-lang-left {
+  border: 1px solid #64ffda;
+  padding: 12px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.lang {
+  display: grid;
+  grid-template-columns: 25% 25% 25%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+/* timeline-container around content */
+.timeline-container {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+/* The circles on the timeline */
+.timeline-container::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: white;
+  border: 4px solid #ff9f55;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Place the timeline-container to the left */
+.left {
+  left: 0;
+}
+
+/* Place the timeline-container to the right */
+.right {
+  left: 50%;
+}
+
+/* Add arrows to the left timeline-container (pointing right) */
+.left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid white;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+/* Add arrows to the right timeline-container (pointing left) */
+.right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for timeline-containers on the right side */
+.right::after {
+  left: -16px;
+}
+
+/* The actual content */
+.content {
+  padding: 20px 30px;
+  position: relative;
+  border-radius: 6px;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+  /* Place the timelime to the left */
+  .timeline::after {
+    left: 31px;
   }
-  to {
-    transform: rotate(360deg);
+
+  /* Full-width timeline-containers */
+  .timeline-container {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+
+  /* Make sure that all arrows are pointing leftwards */
+  .timeline-container::before {
+    left: 60px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+
+  /* Make sure all circles are at the same spot */
+  .left::after,
+  .right::after {
+    left: 15px;
+  }
+
+  /* Make all right timeline-containers behave like the left ones */
+  .right {
+    left: 0%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .sideicons {
+    display: none;
+  }
+  .lang {
+    display: grid;
+    grid-template-columns: 50% 50%;
   }
 }

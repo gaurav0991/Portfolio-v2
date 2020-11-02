@@ -1,0 +1,23 @@
+.sidebar {
+  background-color: #4c608e;
+  min-height: 100%;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+img {
+  animation: glow 1.5s linear infinite alternate;
+  animation-delay: 1s;
+  transition: none;
+}
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px -10px #64ffda;
+  }
+  to {
+    box-shadow: 0 0 10px 10px #64ffda;
+  }
+}
+Nav {
+  color: #64ffda;
+  margin-right: 20px;
+}
