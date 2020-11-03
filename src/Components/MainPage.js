@@ -16,11 +16,18 @@ function MainPage(props) {
         <br />
         <div className="vert pt-2"> </div>
       </div>
-      <center style={{ textAlign: "left" }}>
-        <div className="container" style={{ height: "100vh" }}>
-          <h6 style={{ marginTop: "15%" }}>Hi, my name is </h6>
+      <center
+        style={{
+          flexDirection: "column",
+          alignItems: "flex-start",
+          textAlign: "left",
+          marginTop: "15%",
+        }}
+      >
+        <div className="container mt-5" style={{ height: "100vh" }}>
+          <h6 style={{ margin: "0 0 10px 4px" }}>Hi, my name is </h6>
           <h1 style={{ color: "#e6f1ff", fontSize: "3rem" }}>Gaurav Saraf</h1>
-          <h3 style={{ color: "#8892b0", fontSize: "2rem" }}>
+          <h3 style={{ color: "#8892b0", fontSize: "2rem", lineHeight: "0.9" }}>
             &nbsp;I am third year B.Tech student
           </h3>
           <p style={{ color: "#e6f1ff" }}>
